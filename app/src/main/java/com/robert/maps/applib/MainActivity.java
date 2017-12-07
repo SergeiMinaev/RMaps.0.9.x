@@ -156,6 +156,8 @@ public class MainActivity extends Activity {
 	//private AnalyticsTrackers mTracker;
 	private ImageView mOverlayView;
 	private ExecutorService mThreadPool = Executors.newSingleThreadExecutor(new SimpleThreadFactory("MainActivity.Search"));
+
+	private static Context mContext;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -170,6 +172,7 @@ public class MainActivity extends Activity {
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		
 		CreateContentView();
+		mContext = getApplicationContext();
 		
 		mPoiManager = new PoiManager(this);
 		mLocationListener = new SampleLocationListener();
@@ -1725,4 +1728,7 @@ public class MainActivity extends Activity {
 		}
 	}
 
+	public static Context getAppContext() {
+		return mContext;
+	}
 }
