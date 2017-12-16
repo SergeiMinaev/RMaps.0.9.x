@@ -7,13 +7,11 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Handler;
 import android.preference.PreferenceManager;
-import android.util.Log;
 
 import com.robert.maps.applib.MainPreferences;
 import com.robert.maps.R;
 import com.robert.maps.applib.utils.RException;
 import com.robert.maps.applib.utils.Ut;
-import com.robert.maps.applib.MainActivity;
 
 import org.andnav.osm.util.BoundingBoxE6;
 import org.andnav.osm.util.GeoPoint;
@@ -24,7 +22,7 @@ public class TileSource extends TileSourceBase {
 	private TileURLGeneratorBase mTileURLGenerator;
 	private TileSourceBase mTileSourceBaseOverlay;
 	private TileSource mTileSourceForTileOverlay;
-
+	
 	public TileSource(Context ctx, String aId) throws SQLiteException, RException {
 		this(ctx, aId, true, true);
 	}
@@ -253,11 +251,7 @@ public class TileSource extends TileSourceBase {
 	}
 
 	public int getTileSizePx(int mZoom) {
-		int tileSize = MAPTILE_SIZEPX;
-		float density = MainActivity.getAppContext().getResources().getDisplayMetrics().density * 256 / tileSize;
-		int size = (int) (tileSize * density);
-		//Log.e("tile size", Float.toString(size));
-		return size;
+		return MAPTILE_SIZEPX;
 	}
 	
 	public int getTileUpperBound(final int zoomLevel) {
