@@ -118,7 +118,7 @@ public class AreaSelectorOverlay extends TileViewOverlay {
 	}
 	
 	private void setAreaBound(Rect bound, int x, int y) {
-		final int area = 20;
+		final int area = 60;
 		bound.set(x - area, y - area, x + area, y + area);
 	}
 
