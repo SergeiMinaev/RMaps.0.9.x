@@ -42,9 +42,9 @@
         android:title="@string/menu_poilist">
     </item>
     <item
-        android:id="@+id/mylocation"
-        android:icon="@android:drawable/ic_menu_mylocation"
-        android:title="@string/menu_mylocation">
+        android:id="@+id/tracks"
+        android:icon="@android:drawable/ic_media_play"
+        android:title="@string/menu_tracks">
     </item>
     <item
         android:id="@+id/mapselector"
@@ -71,8 +71,9 @@
         android:visible="true">
     </item>
     <item
-        android:id="@+id/tracks"
-        android:title="@string/menu_tracks">
+        android:id="@+id/mylocation"
+        android:icon="@android:drawable/ic_menu_mylocation"
+        android:title="@string/menu_mylocation">
     </item>
     <!-- <item android:id="@+id/routes" android:title="@string/menu_routes"></item> -->
     <item
