@@ -117,8 +117,8 @@ All rights reserved\n
   <string name="PoiTitle">Наименование</string>
   <string name="PoiIcon">Иконка</string>
   <string name="PoiCategoryTitle">Категория</string>
-  <string name="PoiLat">Широта</string>
-  <string name="PoiLon">Долгота</string>
+  <string name="PoiLat">Ш</string>
+  <string name="PoiLon">Д</string>
   <string name="PoiDescr">Описание</string>
   <string name="hidden">Скрытый</string>
   <string name="hiddencategory">Скрывать POI этой категории</string>
@@ -243,7 +243,7 @@ http://c.tile.openstreetmap.org/{z}/{x}/{y}.png\n
   <string name="pref_line_gps">Линия к GPS</string>
   <string name="pref_line_gps_summary">Показать линию между текущим местоположением и центром экрана</string>
   <string name="menu_share">Поделиться</string>
-  <string name="PoiAlt">Высота</string>
+  <string name="PoiAlt">В</string>
   <string name="offset_info">Двигайте карту одним пальцем, чтобы установить смещение. Чтобы подвинуть карту, используйте два пальца.</string>
   <string name="offset_text">Смещение</string>
   <string name="offset_button_open_map">Открыть карту для установки смещения</string>
