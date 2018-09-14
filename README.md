@@ -2,6 +2,8 @@
 This is a bit modified version of good old gps tracker.
 
 # Changelog
+  - 2018-09-14:
+    Shorten Russian 'Широта', 'Высота', 'Долгота' to 'Ш', 'В', 'Д';
   - 2018-07-30:
     Remove 'Routes' btn, because this feature is not implemented;
     Replace 'My location' btn with 'Tracks';
