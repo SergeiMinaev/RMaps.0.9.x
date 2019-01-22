@@ -155,6 +155,7 @@ public class MainActivity extends Activity {
 	
 	//private AnalyticsTrackers mTracker;
 	private ImageView mOverlayView;
+	private ImageView mMenuToggleView;
 	private ExecutorService mThreadPool = Executors.newSingleThreadExecutor(new SimpleThreadFactory("MainActivity.Search"));
 
 	private static Context mContext;
@@ -446,9 +447,24 @@ public class MainActivity extends Activity {
 			});
 		}
 
-        mOverlayView = new ImageView(this);
-        mOverlayView.setImageResource(R.drawable.r_overlays);
         final int pad = getResources().getDimensionPixelSize(R.dimen.zoom_ctrl_padding);
+
+        final ImageView mMenuToggleView = new ImageView(this);
+        mMenuToggleView.setImageResource(R.drawable.menu);
+        mMenuToggleView.setPadding(0, pad, 0, pad);
+        final RelativeLayout.LayoutParams llParams = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT,
+                RelativeLayout.LayoutParams.WRAP_CONTENT);
+		llParams.addRule(RelativeLayout.CENTER_VERTICAL);
+        ((RelativeLayout) findViewById(R.id.right_area)).addView(mMenuToggleView, llParams);
+		mMenuToggleView.setOnClickListener(new OnClickListener() {
+                                               @Override
+                                               public void onClick(View v) {
+                                                   MainActivity.this.openOptionsMenu();
+                                               }
+                                           });
+
+		mOverlayView = new ImageView(this);
+        mOverlayView.setImageResource(R.drawable.r_overlays);
         mOverlayView.setPadding(0, pad, 0, pad);
         ((LinearLayout) mMap.findViewById(R.id.right_panel)).addView(mOverlayView);
 

@@ -2,6 +2,8 @@
 This is a bit modified version of good old gps tracker.
 
 # Changelog
+  - 2019-01-23:
+    Add button that toggle main options menu. It can be useful for new devices without hardware 'menu' button.
   - 2018-09-14:
     Shorten Russian 'Широта', 'Высота', 'Долгота' to 'Ш', 'В', 'Д';
   - 2018-07-30:
