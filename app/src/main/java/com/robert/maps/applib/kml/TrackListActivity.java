@@ -84,15 +84,23 @@ public class TrackListActivity extends ListActivity {
 
 	private void updateButtons() {
 		final SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(this);
-		boolean isTrackWriting = pref.getBoolean("isTrackWriting", false);
-		if (isTrackWriting) {
+		String isTrackWritingStatus = pref.getString("isTrackWritingStatus", "stopped");
+		if (isTrackWritingStatus == "started") {
 			((Button) findViewById(R.id.startButton)).setEnabled(false);
 			((Button) findViewById(R.id.pauseButton)).setEnabled(true);
 			((Button) findViewById(R.id.stopButton)).setEnabled(true);
-		} else {
+		} else if (isTrackWritingStatus == "stopped"){
 			((Button) findViewById(R.id.startButton)).setEnabled(true);
 			((Button) findViewById(R.id.pauseButton)).setEnabled(false);
 			((Button) findViewById(R.id.stopButton)).setEnabled(false);
+		} else if (isTrackWritingStatus == "paused") {
+			((Button) findViewById(R.id.startButton)).setEnabled(true);
+			((Button) findViewById(R.id.pauseButton)).setEnabled(false);
+			((Button) findViewById(R.id.stopButton)).setEnabled(true);
+		} else {
+			((Button) findViewById(R.id.startButton)).setEnabled(true);
+			((Button) findViewById(R.id.pauseButton)).setEnabled(true);
+			((Button) findViewById(R.id.stopButton)).setEnabled(true);
 		}
 	}
 
@@ -115,7 +123,7 @@ public class TrackListActivity extends ListActivity {
 		.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
 				startService(new Intent("com.robert.maps.trackwriter"));
-				prefEditor.putBoolean("isTrackWriting", true);
+				prefEditor.putString("isTrackWritingStatus", "started");
 				prefEditor.commit();
 				updateButtons();
 			}
@@ -124,7 +132,7 @@ public class TrackListActivity extends ListActivity {
 		.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
 				stopService(new Intent("com.robert.maps.trackwriter"));
-				prefEditor.putBoolean("isTrackWriting", false);
+				prefEditor.putString("isTrackWritingStatus", "paused");
 				prefEditor.commit();
 				updateButtons();
 			}
@@ -134,7 +142,7 @@ public class TrackListActivity extends ListActivity {
 			public void onClick(View v) {
 				stopService(new Intent("com.robert.maps.trackwriter"));
 				doSaveTrack();
-				prefEditor.putBoolean("isTrackWriting", false);
+				prefEditor.putString("isTrackWritingStatus", "stopped");
 				prefEditor.commit();
 				updateButtons();
 			}
