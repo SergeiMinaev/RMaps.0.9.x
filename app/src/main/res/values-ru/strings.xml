@@ -136,6 +136,7 @@ All rights reserved\n
   <string name="btn_start">Старт</string>
   <string name="btn_pause">Пауза</string>
   <string name="btn_stop">Остановить</string>
+  <string name="btn_menu">Меню</string>
   <string name="trackwriter_nothing">Нечего сохранять</string>
   <string name="trackwriter_saved">Трек сохранен</string>
   <string name="pref_trackwriter_mindistance_summary">Минимальная дистанция</string>

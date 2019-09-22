@@ -111,6 +111,12 @@ public class TrackListActivity extends ListActivity {
 				doSaveTrack();
 			}
 		});
+		((Button) findViewById(R.id.menuButton)).setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				TrackListActivity.this.openOptionsMenu();
+			}
+		});
 		
 		SharedPreferences settings = getPreferences(Activity.MODE_PRIVATE);
 		final int versionDataUpdate = settings.getInt("versionDataUpdate", 0);
@@ -123,7 +129,7 @@ public class TrackListActivity extends ListActivity {
 			editor.putInt("versionDataUpdate", 8);
 			editor.commit();
 		}
-		
+
 	}
 
 	@Override
