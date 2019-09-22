@@ -82,6 +82,20 @@ public class TrackListActivity extends ListActivity {
 	}
 
 
+	private void updateButtons() {
+		final SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(this);
+		boolean isTrackWriting = pref.getBoolean("isTrackWriting", false);
+		if (isTrackWriting) {
+			((Button) findViewById(R.id.startButton)).setEnabled(false);
+			((Button) findViewById(R.id.pauseButton)).setEnabled(true);
+			((Button) findViewById(R.id.stopButton)).setEnabled(true);
+		} else {
+			((Button) findViewById(R.id.startButton)).setEnabled(true);
+			((Button) findViewById(R.id.pauseButton)).setEnabled(false);
+			((Button) findViewById(R.id.stopButton)).setEnabled(false);
+		}
+	}
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -92,16 +106,27 @@ public class TrackListActivity extends ListActivity {
 
         mHandler = new SimpleInvalidationHandler();
 
+		final SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(this);
+		final SharedPreferences.Editor prefEditor = pref.edit();
+
+		updateButtons();
+
 		((Button) findViewById(R.id.startButton))
 		.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
 				startService(new Intent("com.robert.maps.trackwriter"));
+				prefEditor.putBoolean("isTrackWriting", true);
+				prefEditor.commit();
+				updateButtons();
 			}
 		});
 		((Button) findViewById(R.id.pauseButton))
 		.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
 				stopService(new Intent("com.robert.maps.trackwriter"));
+				prefEditor.putBoolean("isTrackWriting", false);
+				prefEditor.commit();
+				updateButtons();
 			}
 		});
 		((Button) findViewById(R.id.stopButton))
@@ -109,6 +134,9 @@ public class TrackListActivity extends ListActivity {
 			public void onClick(View v) {
 				stopService(new Intent("com.robert.maps.trackwriter"));
 				doSaveTrack();
+				prefEditor.putBoolean("isTrackWriting", false);
+				prefEditor.commit();
+				updateButtons();
 			}
 		});
 		((Button) findViewById(R.id.menuButton)).setOnClickListener(new OnClickListener() {
@@ -120,7 +148,6 @@ public class TrackListActivity extends ListActivity {
 		
 		SharedPreferences settings = getPreferences(Activity.MODE_PRIVATE);
 		final int versionDataUpdate = settings.getInt("versionDataUpdate", 0);
-		final SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(this);
 		mUnits = Integer.parseInt(pref.getString("pref_units", "0"));
 
 		if(versionDataUpdate < 8){

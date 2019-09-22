@@ -4,6 +4,7 @@ This is a bit modified version of good old gps tracker.
 # Changelog
   - 2019-09-22:
     TrackList: add 'menu' button to toggle options menu.
+    TrackWriter: disable/enable start/pause/stop buttons according to the status.
   - 2019-01-23:
     Add button that toggle main options menu. It can be useful for new devices without hardware 'menu' button.
   - 2018-09-14:
